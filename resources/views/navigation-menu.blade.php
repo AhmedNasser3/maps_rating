@@ -26,7 +26,9 @@
             @endguest
             @auth
             <div class="flex" style="width:70%; ">
+                @if (auth()->user()->role_id == 1)
                 <x-nav-link href="{{ route('place.create') }}" class="ml-3 text-white">{{ __('إنشاء موقع') }}</x-nav-link>
+                @endif
                 <x-nav-link href="{{ route('bookmarks') }}" class="ml-3 text-white">{{ __('الإشارات المرجعية') }}</x-nav-link>
             </div>
             <div class="hidden sm:flex sm:items-center sm:ms-6">
