@@ -32,13 +32,23 @@ class PlaceController extends Controller
     }
     public function store(Request $request)
     {
-        if($request->image) {
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->storeAs('public\images', $imageName);
-            $request->user()->places()->create($request->except('image') + ['image' => $imageName]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+
+            // تحديد اسم الصورة
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+
+            // حفظ الصورة يدويًا في المجلد المحدد
+            $image->move(storage_path('app/public/images'), $imageName);
+
+            // حفظ المكان في قاعدة البيانات
+            $request->user()->places()->create(array_merge($request->except('image'), ['image' => $imageName]));
         } else {
+            // إذا لم يتم رفع صورة
             $request->user()->places()->create($request->all());
         }
+
+
 
         return back();
     }
