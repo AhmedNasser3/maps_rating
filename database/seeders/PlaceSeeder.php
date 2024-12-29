@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use DB;
 use Illuminate\Database\Seeder;
-use App\Models\Category; // تأكد من استيراد الـ Category Model
+use App\Models\Category;
 use App\Models\Place;
+use App\Models\User;  // تأكد من استيراد الـ User Model
 
 class PlaceSeeder extends Seeder
 {
@@ -19,18 +20,54 @@ class PlaceSeeder extends Seeder
         $category2 = Category::create(['title' => 'مطاعم', 'slug' => 'restaurants']);
         $category3 = Category::create(['title' => 'صيدليات', 'slug' => 'pharmacies']);
 
-        // حذف جميع الأماكن السابقة لتجنب التكرار
+        // إضافة المستخدمين
+        $user1 = User::create([
+            'name' => 'أحمد ناصر',
+            'email' => 'ahmed@example.com',
+            'password' => bcrypt('password'), // تأكد من تشفير كلمة المرور
+            'role_id' => 1, // مثلا role_id 1 يعني أدمن
+        ]);
+
+        $user2 = User::create([
+            'name' => 'محمد علي',
+            'email' => 'mohamed@example.com',
+            'password' => bcrypt('password'),
+            'role_id' => 2,
+        ]);
+
+        $user3 = User::create([
+            'name' => 'سارة خالد',
+            'email' => 'sara@example.com',
+            'password' => bcrypt('password'),
+            'role_id' => 2,
+        ]);
+
+        $user4 = User::create([
+            'name' => 'لطيفة حسين',
+            'email' => 'latifa@example.com',
+            'password' => bcrypt('password'),
+            'role_id' => 2,
+        ]);
+
+        $user5 = User::create([
+            'name' => 'أحمد محمد',
+            'email' => 'ahmedmohamed@example.com',
+            'password' => bcrypt('password'),
+            'role_id' => 2,
+        ]);
+
+        // حذف الأماكن السابقة لتجنب التكرار
         \DB::table('places')->truncate();
 
-        // إضافة الأماكن وربطها بالفئات
+        // إضافة الأماكن وربطها بالفئات والمستخدمين
         $place = new Place();
         $place->name = "سوق مكة";
         $place->slug = 'سوق-مكة';
-        $place->image = "1.jpeg";
-        $place->category_id = $category1->id;  // ربط الفئة بـ Place
+        $place->image = "physical-map.jpg";
+        $place->category_id = $category1->id;
         $place->overview = "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث";
         $place->address = "الطريق الدائري الثالث، حي الهجرة، مكة ، المملكة العربية السعودية";
-        $place->user_id = 1;
+        $place->user_id = $user1->id; // ربط المستخدم بـ Place
         $place->latitude = 21.3924513;
         $place->longitude = 39.8226124;
         $place->view_count = 3;
@@ -39,11 +76,11 @@ class PlaceSeeder extends Seeder
         $place = new Place();
         $place->name = 'مطعم مكة';
         $place->slug = 'مطعم-مكة';
-        $place->image = '2.jpg';
-        $place->category_id = $category2->id;  // ربط الفئة بـ Place
+        $place->image = 'physical-map.jpg';
+        $place->category_id = $category2->id;
         $place->overview = "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث...";
         $place->address = 'الكعكية، مكة ، المملكة العربية السعودية';
-        $place->user_id = 2;
+        $place->user_id = $user2->id; // ربط المستخدم بـ Place
         $place->latitude = '35.743330';
         $place->longitude = '-5.819870';
         $place->view_count = 2;
@@ -52,11 +89,11 @@ class PlaceSeeder extends Seeder
         $place = new Place();
         $place->name = 'صيدلية مكة';
         $place->slug = 'صيدلية-مكة';
-        $place->image = 'default.png';
-        $place->category_id = $category3->id;  // ربط الفئة بـ Place
+        $place->image = 'physical-map.jpg';
+        $place->category_id = $category3->id;
         $place->overview = "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث...";
         $place->address = 'شارع ذات النطاقين، الهجرة، مكة ، المملكة العربية السعودية';
-        $place->user_id = 1;
+        $place->user_id = $user3->id; // ربط المستخدم بـ Place
         $place->latitude = '21.357680';
         $place->longitude = '39.860840';
         $place->view_count = 1;
@@ -65,11 +102,11 @@ class PlaceSeeder extends Seeder
         $place = new Place();
         $place->name = 'صيدلية الشهد';
         $place->slug = 'صيدلية-الشهد';
-        $place->image = '4.jpg';
-        $place->category_id = $category3->id;  // ربط الفئة بـ Place
+        $place->image = 'physical-map.jpg';
+        $place->category_id = $category3->id;
         $place->overview = "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث...";
         $place->address = 'شارع خالد بن عبدالعزيز،، العزيزية الجنوبية، مكة ، المملكة العربية السعودية';
-        $place->user_id = 3;
+        $place->user_id = $user4->id; // ربط المستخدم بـ Place
         $place->latitude = '21.431800';
         $place->longitude = '39.291380';
         $place->view_count = 0;
