@@ -6,7 +6,6 @@
 قم بإنشاء ملف `.env` وتعيين قيم الاتصال بقاعدة البيانات بالشكل المطلوب.
 
 تأكد من أن الإعدادات في ملف `.env` متوافقة مع إعدادات phpMyAdmin الخاصة بك، مثل:
-
 ```dotenv
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -14,6 +13,7 @@ DB_PORT=3306
 DB_DATABASE=maps_rating
 DB_USERNAME=root
 DB_PASSWORD=root
+```
 ---
 
 ## الخطوة 2: تثبيت الحزم
