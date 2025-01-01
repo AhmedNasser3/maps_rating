@@ -71,7 +71,7 @@
                         </h3>
                     </div>
                     <div>
-                        <span>عدد التقييمات</span> {{ $place->reviews_count }}
+                        <span>{{ __('Number of reviews') }}</span> {{ $place->reviews_count }}
                     </div>
                 </div>
                 <div class="mr-2 col-span-2">
@@ -147,7 +147,7 @@
                                 <button id="like" type="button" data-id="{{ $review->id }}" class="border rounded p-1 text-xs like">
                                     {!! Auth::user()->alreadyliked($review->id) ?
                                         '<i class="fa fa-thumbs-down"></i><small> إلغاء الإعجاب </small>' :
-                                        '<i class="fa fa-thumbs-up"></i><small> أعجبني </small>' !!}
+                                        '<i class="fa fa-thumbs-up"></i><small>' . __( 'like' ) . ' </small>' !!}
                                     <span>{{ $review->likes_count }}</span>
                                 </button>
                             @else
@@ -253,7 +253,7 @@
                 data:{'review_id' : review}
             }).done(function(data){
                 if(data) {
-                    $.trim(likebtn.find('small').text()) == 'أعجبني' ? showUnLike(data) : showlike(data);
+                    $.trim(likebtn.find('small').text()) == 'like' ? showUnLike(data) : showlike(data);
                 } else {
                     alert('لا يمكنك الإعجاب بهذه المراجعة');
                 }
@@ -264,7 +264,7 @@
             }
 
             function showlike(count) {
-                likebtn.html('<li class="fa fa-thumbs-up"></li> <small>' + 'أعجبني' +'</small>'+ count );
+                likebtn.html('<li class="fa fa-thumbs-up"></li> <small>' + 'like' +'</small>'+ count );
             }
 
         })
