@@ -4,9 +4,9 @@
     </x-slot>
 
     <div class="container mx-auto md:px-12 p-5">
-        <h3 class="mb-4 mt-4 text-2xl">الإشارات المرجعية  </h3><hr/>
+        <h3 class="mb-4 mt-4 text-2xl">{{ __('Bookmarks') }} </h3><hr/>
          @if(!count($bookmarks))
-            <x-alert color="blue" message="لا توجد أي إشارات مرجعية بعد" />
+            <x-alert color="blue" message="{{ __('There are no bookmarks yet') }}" />
          @endif
 
          @foreach($bookmarks as $place)
