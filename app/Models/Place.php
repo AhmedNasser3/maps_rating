@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
 
 class Place extends Model
@@ -16,7 +17,14 @@ class Place extends Model
         return asset('storage/images/'.$image);
 
     }
+    protected static function boot()
+    {
+        parent::boot();
 
+        static::created(function ($place) {
+            Event::dispatch('place.created', $place);
+        });
+    }
     public function scopeSearch($query, $request)
     {
         if($request->category) {

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->double('latitude');
             $table->double('longitude');
             $table->integer('view_count')->default(0);
+            $table->boolean('is_approved')->default(false);
             $table->timestamps();
         });
     }
