@@ -15,7 +15,7 @@
                     </a>
                     <header class="items-center justify-between p-2 leading-tight md:p-4">
                         <h1 class="mb-3 text-base">
-                            <a class="text-black no-underline hover:underline" href="">
+                            <a class="text-black no-underline hover:underline" href="{{ route('place.show', [$place->id, $place->slug]) }}">
                                 {{ $place->name }}
                             </a>
                         </h1>
