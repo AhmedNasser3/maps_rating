@@ -6,7 +6,7 @@
       @if(!$places->count())
         <div class="text-blue-900 px-6 py-4 rounded relative bg-gray-200 max-w-7xl mx-auto">
             <span class="inline-block align-middle mr-8">
-                 لا يوجد مواقع ضمن هذا التصنيف.
+                {{ __('There are no sites in this category') }}.
             </span>
         </div>
       @else
@@ -34,7 +34,6 @@
             </div>
              @endforeach
           </div>
-
           <div class="ml-3">
                 <div id="mapid" style="height: 500px"></div>
             </div>
