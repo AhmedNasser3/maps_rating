@@ -10,40 +10,40 @@
             @csrf
             <div class="grid grid-cols-2 gap-4">
                 <div class="">
-                    <label for="name"> اسم الموقع</label>
+                    <label for="name">{{ __('Site name') }}</label>
                     <input required type="text" class="w-full px-4 py-2 mt-2 mb-6 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-400" name="name" />
                 </div>
                 <div class="">
-                    <label for="catg"> اختر التصنيف</label>
+                    <label for="catg">{{ __('Select the category') }}</label>
                     <select class="w-full px-4 py-2 mt-2 mb-6 pr-10 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-400" name="category_id" >
                     @include('includes.category_list')
                     </select>
                 </div>
             </div>
             <div class="">
-                    <label for="overview"> نبذة عن الموقع</label>
+                    <label for="overview">{{ __('About the site') }}</label>
                     <textarea type="text" class="w-full px-4 py-2 mt-2 mb-6 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-400" name="overview" id="overview" rows="5"></textarea>
             </div>
             <div class="">
-                    <label for="details"> اختر صورة </label>
+                    <label for="details">{{ __('Choose an image') }}</label>
                     <input required type="file" name="image"  class="form-control">
             </div>
             <div class="mt-2">
                 <div id="mapid" style="height: 350px;"></div>
             </div>
             <div class="mt-4">
-                    <label for="address1"> العنوان</label>
+                    <label for="address1"> {{ __('the address') }}</label>
                     <input required type="text" class="w-full px-4 py-2 mt-2 mb-6 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-400" name="address" id="address1"/>
             </div>
             <div class="form-group col-lg-6">
-                    <label for="long">خط الطول</label>
+                    <label for="long">{{ __('Longitude') }}</label>
                     <input required type="number" step="any" class="w-full px-4 py-2 mt-2 mb-6 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-400" name="longitude" id="longitude" value=""/>
                 </div>
             <div class="form-group col-lg-6">
-                <label for="lat">خط العرض</label>
+                <label for="lat">{{ __('latitude') }}</label>
                 <input required type="text" class="w-full px-4 py-2 mt-2 mb-6 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-400" name="latitude" id="latitude" value=""/>
             </div>
-            <button type="submit" class="px-4 py-2 mt-3 text-gray-200 bg-blue-600 rounded hover:bg-blue-500 focus:outline-none">إرسال</button>
+            <button type="submit" class="px-4 py-2 mt-3 text-gray-200 bg-blue-600 rounded hover:bg-blue-500 focus:outline-none">{{ __('Create') }}</button>
         </form>
     </div>
 </x-app-layout>

@@ -84,11 +84,11 @@
         <!-- Role -->
         <div class="col-span-6 sm:col-span-4 grid grid-cols-2">
             <div>
-                <x-label for="owner" value="{{ __('صاحب موقع') }}" />
+                <x-label for="owner" value="{{ __('Website owner') }}" />
                 <input id="owner" name="role" type="radio" value="1" class="" wire:model.defer="state.role_id" />
             </div>
             <div>
-                <x-label for="user" value="{{ __('مستخدم عادي') }}" />
+                <x-label for="user" value="{{ __('Regular user') }}" />
                 <input id="user" name="role" type="radio" value="2" class="" wire:model.defer="state.role_id" />
             </div>
         </div>

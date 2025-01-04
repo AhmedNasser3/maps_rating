@@ -12,7 +12,7 @@
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
             <div class="col-span-2 bg-white shadow-lg rounded p-5">
                 <div class="">
-                    <h1 class="mb-4 text-2xl">نبذة عن الموقع</h1>
+                    <h1 class="mb-4 text-2xl">{{ __('About the site') }}</h1>
                     <p class="text-sm">{{ $place->overview }}</p>
                 </div>
                 <div class="mt-5 ">
@@ -232,7 +232,7 @@
                             <x-alert color="red" message="{{ $message }}" />
                         @enderror
                         <input class="form-control" name="place_id" id="place_id" type="hidden" value="{{ $place->id }}">
-                        <button type="submit" class="mt-3 bg-blue-600 text-gray-200 rounded hover:bg-blue-500 px-4 py-2 focus:outline-none">إرسال</button>
+                        <button type="submit" class="mt-3 bg-blue-600 text-gray-200 rounded hover:bg-blue-500 px-4 py-2 focus:outline-none">{{ __('Create') }}</button>
                     </div>
                 </form>
             </div>
