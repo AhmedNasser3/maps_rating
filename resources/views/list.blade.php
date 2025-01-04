@@ -2,7 +2,6 @@
     <x-slot name="header">
         @include('includes/header')
     </x-slot>
-
     <div class="py-12">
       @if(!$places->count())
         <div class="text-blue-900 px-6 py-4 rounded relative bg-gray-200 max-w-7xl mx-auto">
@@ -42,7 +41,6 @@
         <div>
     @endif
     </div>
-
 </x-app-layout>
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
