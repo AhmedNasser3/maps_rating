@@ -27,7 +27,7 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="object-cover rounded-full size-20">
+                    <img src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}"  alt="{{ $this->user->name }}" class="object-cover rounded-full size-20">
                 </div>
 
                 <!-- New Profile Photo Preview -->
