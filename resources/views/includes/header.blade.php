@@ -9,8 +9,8 @@ $categories = Category::all();
         <input id="address" name="address" type="text" autocomplete="off" class="p-2 w-full bg-gray-200 rounded-md" placeholder="حدد العنوان">
         <div id="address-list"></div>
     </div>
-    <div class="w-6/12">
-        <select class="p-1 mr-5 bg-gray-200 w-full rounded-md pr-10" name="category">
+    <div class="w-6/12 pl-2 pr-2">
+        <select class="p-2 mr-5 bg-gray-200 w-full rounded-md pr-10" name="category">
             <option value="">حدد التصنيف </option>
             @include('includes\category_list')
         </select>
