@@ -26,4 +26,5 @@
             @endforeach
         </div>
     </div>
+    @include('includes/footer')
 </x-app-layout>
