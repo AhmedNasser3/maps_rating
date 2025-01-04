@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index(){
         $places = Place::orderBy('view_count','desc')->take(3)->get();
-        $AllPlaces = Place::orderBy('view_count','desc')->get();
+        $AllPlaces = Place::orderBy('id','desc')->get();
         return view('welcome', compact('places','AllPlaces'));
     }
 }

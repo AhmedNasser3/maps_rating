@@ -1,6 +1,8 @@
 {
     "Number of reviews": "عدد التقييمات",
-    "like": "أعجبني",
+    "like": "أهلًا بك عزيزي المستخدم",
+    "Welcome, dear user": "أعجبني",
+    "Log Out": "تسجيل خروج",
     "There are no sites in this category": " لا يوجد مواقع ضمن هذا التصنيف",
     "All locations available": "جميع المواقع المتوفرة",
     "Create": "إرسال",
@@ -51,7 +53,7 @@
     "Photo": "الصورة",
     "Select A New Photo": "اختر صورة جديدة",
     "Remove Photo": "حذف صورة",
-    "Update Password": "",
+    "Update Password": "نحديث كلمة المرور",
     "Ensure your account is using a long, random password to stay secure.": "تأكد من أن حسابك يستخدم كلمة مرور طويلة وعشوائية للبقاء آمنًا.",
     "Current Password": "كلمة المرور الحالية",
     "New Password": "كلمة المرور الجديدة",

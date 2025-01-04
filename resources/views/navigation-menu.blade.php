@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="/" :active="request()->routeIs('dashboard')" class="text-white">
+                    <x-nav-link href="/" :active="request()->routeIs('dashboard')" class=" transition duration-150 ease-in-out hover:text-blue-400 text-white">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
@@ -20,16 +20,16 @@
 
             @guest
             <div class="flex">
-                <x-nav-link href="{{ route('login') }}" class="ml-3 text-white">{{ __('Login') }}</x-nav-link>
-                <x-nav-link href="{{ route('register') }}" class="ml-3 text-white">{{ __('Register') }}</x-nav-link>
+                <x-nav-link href="{{ route('login') }}" class="ml-3 transition duration-150 ease-in-out hover:text-blue-400 text-white">{{ __('Login') }}</x-nav-link>
+                <x-nav-link href="{{ route('register') }}" class="ml-3 transition duration-150 ease-in-out hover:text-blue-400 text-white">{{ __('Register') }}</x-nav-link>
             </div>
             @endguest
             @auth
             <div class="flex" style="width:70%; ">
                 @if (auth()->user()->role_id == 1)
-                <x-nav-link href="{{ route('place.create') }}" class="ml-3 text-white">{{ __('Create a place') }}</x-nav-link>
+                <x-nav-link href="{{ route('place.create') }}" class="ml-3 transition duration-150 ease-in-out hover:text-blue-400 text-white">{{ __('Create a place') }}</x-nav-link>
                 @endif
-                <x-nav-link href="{{ route('bookmarks') }}" class="ml-3 text-white">{{ __('Bookmarks') }}</x-nav-link>
+                <x-nav-link href="{{ route('bookmarks') }}" class="ml-3 transition duration-150 ease-in-out hover:text-blue-400 text-white">{{ __('Bookmarks') }}</x-nav-link>
             </div>
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Teams Dropdown -->
