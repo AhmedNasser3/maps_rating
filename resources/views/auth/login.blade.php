@@ -1,5 +1,5 @@
-<x-guest-layout>
-    <x-authentication-card>
+<x-guest-layout >
+    <x-authentication-card >
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
@@ -12,7 +12,7 @@
             </div>
         @endsession
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}"  dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
             @csrf
 
             <div>
@@ -40,7 +40,7 @@
                 @endif
 
                 <x-button class="ms-4">
-                    {{ __('Log in') }}
+                    {{ __('Login') }}
                 </x-button>
             </div>
         </form>
