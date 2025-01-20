@@ -27,8 +27,12 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}"  alt="{{ $this->user->name }}" class="object-cover rounded-full size-20">
-                </div>
+                        @if(auth()->user()->profile_photo_path)
+                        <img src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}"  alt="{{ $this->user->name }}" class="object-cover rounded-full size-20">
+                        @else
+                        <img style="border-radius:100%;" class="object-cover rounded-full size-20" src="https://static.vecteezy.com/system/resources/previews/046/345/789/non_2x/contact-information-icons-for-business-card-and-website-vector.jpg" alt="افتراضي" />
+                        @endif
+                                </div>
 
                 <!-- New Profile Photo Preview -->
                 <div class="mt-2" x-show="photoPreview" style="display: none;">

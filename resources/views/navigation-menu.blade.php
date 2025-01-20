@@ -89,9 +89,13 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                            <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                @if(auth()->user()->profile_photo_path)
                                     <img class="object-cover rounded-full size-8" src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="{{ Auth::user()->name }}" />
-                                </button>
+                                @else
+                                <img style="border-radius:100%;" class="object-cover rounded-full size-8" src="https://static.vecteezy.com/system/resources/previews/046/345/789/non_2x/contact-information-icons-for-business-card-and-website-vector.jpg" alt="افتراضي" />
+                                @endif
+                            </button>
                             @else
                                 <span class="inline-flex rounded-md">
                                     <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
@@ -160,9 +164,13 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                    <div class="shrink-0 me-3">
-                        <img class="object-cover rounded-full size-10" src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="{{ Auth::user()->name }}" />
-                    </div>
+                              <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                @if(auth()->user()->profile_photo_path)
+                                    <img class="object-cover rounded-full size-8" src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="{{ Auth::user()->name }}" />
+                                @else
+                                <img style="border-radius:100%;" class="object-cover rounded-full size-8" src="https://static.vecteezy.com/system/resources/previews/046/345/789/non_2x/contact-information-icons-for-business-card-and-website-vector.jpg" alt="افتراضي" />
+                                @endif
+                            </button>
                 @endif
 
                 <div>
