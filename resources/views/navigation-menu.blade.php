@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link  href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="transition duration-150 ease-in-out hover:text-blue-400 text-white ">
+                    <x-nav-link  href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="text-white transition duration-150 ease-in-out hover:text-blue-400 ">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
@@ -20,16 +20,16 @@
 
             @guest
             <div class="flex">
-                <x-nav-link href="{{ route('login') }}" class="ml-3 transition duration-150 ease-in-out hover:text-blue-400 text-white ">{{ __('Login') }}</x-nav-link>
-                <x-nav-link href="{{ route('register') }}" class="ml-3 transition duration-150 ease-in-out hover:text-blue-400 text-white ">{{ __('Register') }}</x-nav-link>
+                <x-nav-link href="{{ route('login') }}" class="ml-3 text-white transition duration-150 ease-in-out hover:text-blue-400 ">{{ __('Login') }}</x-nav-link>
+                <x-nav-link href="{{ route('register') }}" class="ml-3 text-white transition duration-150 ease-in-out hover:text-blue-400 ">{{ __('Register') }}</x-nav-link>
             </div>
             @endguest
             @auth
             <div class="flex" style="width:70%; ">
                 @if (auth()->user()->role_id == 1)
-                <x-nav-link href="{{ route('place.create') }}" class="ml-3 transition duration-150 ease-in-out hover:text-blue-400 text-white ">{{ __('Create a place') }}</x-nav-link>
+                <x-nav-link href="{{ route('place.create') }}" class="ml-3 text-white transition duration-150 ease-in-out hover:text-blue-400 ">{{ __('Create a place') }}</x-nav-link>
                 @endif
-                <x-nav-link href="{{ route('bookmarks') }}" class="ml-3 transition duration-150 ease-in-out hover:text-blue-400 text-white ">{{ __('Bookmarks') }}</x-nav-link>
+                <x-nav-link href="{{ route('bookmarks') }}" class="ml-3 text-white transition duration-150 ease-in-out hover:text-blue-400 ">{{ __('Bookmarks') }}</x-nav-link>
             </div>
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <!-- Teams Dropdown -->
@@ -90,23 +90,19 @@
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                                @if(auth()->user()->profile_photo_path)
-                                    <img class="object-cover rounded-full size-8" src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="{{ Auth::user()->name }}" />
-                                @else
-                                <img style="border-radius:100%;" class="object-cover rounded-full size-8" src="https://static.vecteezy.com/system/resources/previews/046/345/789/non_2x/contact-information-icons-for-business-card-and-website-vector.jpg" alt="افتراضي" />
-                                @endif
+                                <img class="object-cover rounded-full size-8" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                             </button>
                             @else
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
-                                        {{ Auth::user()->name }}
+                            <span class="inline-flex rounded-md">
+                                <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
+                                    {{ Auth::user()->name }}
 
-                                        <svg class="ms-2 -me-0.5 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                        </svg>
-                                    </button>
-                                </span>
-                            @endif
+                                    <svg class="ms-2 -me-0.5 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </button>
+                            </span>
+                        @endif
                         </x-slot>
 
                         <x-slot name="content">
@@ -164,14 +160,20 @@
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                              <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                                @if(auth()->user()->profile_photo_path)
-                                    <img class="object-cover rounded-full size-8" src="{{ asset('storage/' . auth()->user()->profile_photo_path) }}" alt="{{ Auth::user()->name }}" />
+                                <button class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                    <img class="object-cover rounded-full size-8" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                </button>
                                 @else
-                                <img style="border-radius:100%;" class="object-cover rounded-full size-8" src="https://static.vecteezy.com/system/resources/previews/046/345/789/non_2x/contact-information-icons-for-business-card-and-website-vector.jpg" alt="افتراضي" />
-                                @endif
-                            </button>
-                @endif
+                                <span class="inline-flex rounded-md">
+                                    <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
+                                        {{ Auth::user()->name }}
+
+                                        <svg class="ms-2 -me-0.5 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            @endif
 
                 <div>
                     <div class="text-base font-medium text-gray-800">{{ Auth::user()->name }}</div>
