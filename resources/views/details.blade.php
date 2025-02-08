@@ -29,7 +29,7 @@
                     <h3>{{ $place->user->name }}</h3>
                     <p></p>
                     <ul class="mt-3">
-                        <li><i class="fa fa-envelope"></i>{{ $place->user->email }} </li>
+                        <li><i class="fa fa-envelope"></i> &nbsp;&nbsp;{{ $place->user->email }} </li>
                     </ul>
                 </div>
                 <hr/>
