@@ -161,14 +161,21 @@
                         </div>
                                                 <div class="mt-3">
                             @auth
-                                <button id="like" type="button" data-id="{{ $review->id }}" class="border rounded p-1 text-xs like">
-                                    {!! Auth::user()->alreadyliked($review->id) ?
-                                        '<i class="fa fa-thumbs-down"></i><small> إلغاء الإعجاب </small>' :
-                                        '<i class="fa fa-thumbs-up"></i><small>' . __( 'like' ) . ' </small>' !!}
-                                    <span>{{ $review->likes_count }}</span>
-                                </button>
+                            <button id="like" type="button" data-id="{{ $review->id }}" class="border rounded p-1 text-xs like">
+                                @auth
+                                    {!! Auth::user()->alreadyliked($review->id)
+                                        ? '<i class="fa fa-thumbs-down"></i><small> ' . __('Unlike') . '</small>'
+                                        : '<i class="fa fa-thumbs-up"></i><small> ' . __('like') . '</small>' !!}
+                                @else
+                                    <i class="fa fa-thumbs-up"></i><small> {{ __('like') }} </small>
+                                @endauth
+                                <span>{{ $review->likes_count }}</span>
+                            </button>
+
                             @else
-                                <span class="border rounded text-xs p-1"><i class="fa fa-thumbs-up"></i> {{ $review->likes_count }}</span>
+                            <a href="{{ route('login') }}">
+                            <span class="border rounded text-xs p-1"><i class="fa fa-thumbs-up"></i> {{ __('like') }} {{ $review->likes_count }}</span>
+                            </a>
                             @endauth
                         </div>
                     </div>
@@ -277,11 +284,11 @@
             });
 
             function showUnLike(count) {
-                likebtn.html('<li class="fa fa-thumbs-down"></li> <small>' + 'إلغاء الإعجاب' + '</small>' + count);
+                likebtn.html('<li class="fa fa-thumbs-down"></li> <small>' + '{!! __('Unlike') !!}' + '</small>' + count);
             }
 
             function showlike(count) {
-                likebtn.html('<li class="fa fa-thumbs-up"></li> <small>' + 'like' +'</small>'+ count );
+                likebtn.html('<li class="fa fa-thumbs-up"></li> <small> {!! __('like') !!} </small>' + count);
             }
 
         })
