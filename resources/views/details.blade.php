@@ -122,21 +122,33 @@
         <div class="row text-right bg-white p-4 shadow-sm">
             <div class="review-block">
                 <div class="grid grid-cols-3 p-5">
-                    <div class="text-sm">
-                        <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-                        <div class="text-blue-400"><a href="#">{{ $review->user->name }}</a></div>
-                        {{-- <div class="review-block-date">{{ $review->created_at->diffForHumans() }}</div> --}}
-                    </div>
+                    <div class="text-sm" style="flex: flex;align-items:center">
+ @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                <img style="width:100px"  class="img-rounded" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                            @else
+                            <span class="inline-flex rounded-md">
+                                <button type="button" class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out bg-white border border-transparent rounded-md hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50">
+                                    {{ Auth::user()->name }}
+
+                                    <svg class="ms-2 -me-0.5 size-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </button>
+                            </span>
+                            @endif                    
+                        </div>
                     <div class="col-span-2">
+                        <div class="text-blue-400"><a href="#">{{ $review->user->name }}</a></div>
+                        <div class="review-block-date">{{ $review->created_at->diffForHumans() }}</div>
                         <div class="rating">
                             @for($i = 1; $i <= 5; $i++)
-                                @if($i <= $review->avgRating())
-                                    <span class="fa fa-star" aria-hidden="true"></span>
-                                @elseif($i == round($review->avgRating()))
-                                    <span class="fa fa-star-half-o fa-flip-horizontal" aria-hidden="true"></span>
-                                @else
-                                    <span class="fa fa-star-o" aria-hidden="true"></span>
-                                @endif
+                            @if($i <= $review->avgRating())
+                            <span class="fa fa-star" aria-hidden="true"></span>
+                            @elseif($i == round($review->avgRating()))
+                            <span class="fa fa-star-half-o fa-flip-horizontal" aria-hidden="true"></span>
+                            @else
+                            <span class="fa fa-star-o" aria-hidden="true"></span>
+                            @endif
                             @endfor
                         </div>
                         <div class="review-block-description">{{ $review->review }}</div>
