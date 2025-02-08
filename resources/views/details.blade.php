@@ -135,7 +135,7 @@
                                     </svg>
                                 </button>
                             </span>
-                            @endif                    
+                            @endif
                         </div>
                     <div class="col-span-2">
                         <div class="text-blue-400"><a href="#">{{ $review->user->name }}</a></div>
